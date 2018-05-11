@@ -11,7 +11,6 @@ import db.CouchDB;
 
 import javax.ws.rs.FormParam;
 
-
 @Path("/anagrafica")
 public class AnagService {
 	@POST
@@ -28,7 +27,7 @@ public class AnagService {
 				"}",nome, cognome, data, indirizzo, tel);
 		
 		CouchDB db = new CouchDB();
-		db.put(cf, "anagrafica", json);
+		db.put("anagrafica", cf, json);
 		
 		return Response.temporaryRedirect(new URI("../questionario.jsp?cf=" + cf + "&tel=" + tel)).build();
 	}
